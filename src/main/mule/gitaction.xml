@@ -5,10 +5,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="e8e3c5aa-e85a-4073-b37a-50796d0d6e49" >
-		<http:listener-connection host="0.0.0.0" port="8081" />
+		<http:listener-connection host="${http.host}" port="${http.port}" />
 	</http:listener-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="13d8b31a-b221-4321-abcb-cdf6e9566d04" file="${env}.yaml" />
+	<global-property doc:name="Global Property" doc:id="a8fb9e44-2e77-4aa2-aeb7-97c6ec2d3f66" name="env" value="local" />
 	<flow name="gitactionFlow" doc:id="4567562a-d1bc-4f2d-b41e-5f7fb6d7f828" >
-		<http:listener doc:name="Listener" doc:id="3da03d8e-b265-4fde-bb6c-927aea7f91c2" config-ref="HTTP_Listener_config" path="/action"/>
+		<http:listener doc:name="Listener" doc:id="3da03d8e-b265-4fde-bb6c-927aea7f91c2" config-ref="HTTP_Listener_config" path="${http.path}"/>
 		<set-payload value="gitaction" doc:name="Set Payload" doc:id="089a48db-d176-4443-803d-acedc43abfc1" />
 		<logger level="INFO" doc:name="Logger" doc:id="b135d97e-7f77-4691-a918-120d936c9f27" message="#[payload]"/>
 	</flow>
