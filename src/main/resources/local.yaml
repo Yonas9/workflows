@@ -1,0 +1,12 @@
+http:
+  host: "0.0.0.0"
+  port: "8081"
+  path: "/action"
+  
+anypoint:
+  username: "SelfLearn"
+  password: "LearnMule#2023"
+  env: "Sandbox"
+  
+app:
+ name: "gitactionmuleapp"
