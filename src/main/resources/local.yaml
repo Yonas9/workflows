@@ -10,3 +10,4 @@ anypoint:
   
 app:
  name: "gitactionmuleapp"
+ runtime: "4.4.0"
